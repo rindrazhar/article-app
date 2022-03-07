@@ -4,8 +4,6 @@
 ```
 npm install
 
-json-server --watch API/db.json
-
 npm run serve
 ```
 
