@@ -43,21 +43,21 @@ export default createStore({
   actions: {
     fetchDatabase(context) {
       axios
-        .get("/posts")
+        .get("https://article-app-vue.herokuapp.com/posts")
         .then((result) => context.commit("setDatas", result.data))
         .catch((err) => console.log(err));
     },
 
     topRatingPosts(context) {
       axios
-        .get("/posts?_sort=vote&_order=desc")
+        .get("https://article-app-vue.herokuapp.com/posts?_sort=vote&_order=desc")
         .then((result) => context.commit("setTopRatingPosts", result.data))
         .catch((err) => console.log(err));
     },
 
     getSinglePost(context, id) {
       axios
-        .get("/posts/" + id)
+        .get("https://article-app-vue.herokuapp.com/posts/" + id)
         .then((result) => {
           context.commit("setSinglePost", result.data);
           context.dispatch("getComments", id);
@@ -68,7 +68,7 @@ export default createStore({
 
     getComments(context, id) {
       axios
-        .get("/comments?postId=" + id)
+        .get("https://article-app-vue.herokuapp.com/comments?postId=" + id)
         .then((result) => {
           context.commit("setPostComments", result.data);
         })
@@ -77,7 +77,7 @@ export default createStore({
 
     addComment(context, data) {
       axios
-        .post("/comments", data)
+        .post("https://article-app-vue.herokuapp.com/comments", data)
         .then((result) => context.commit("setAddComment", result.data))
         .catch((err) => console.log(err));
     },
