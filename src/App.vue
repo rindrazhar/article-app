@@ -1,26 +1,57 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header />
+  <router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Header from "@/components/Header.vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: { Header },
+  created() {
+    this.$store.dispatch("fetchDatabase");
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-size: 14px;
+  font-family: "Fira Code";
+  line-height: 1.5;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  color: #091921;
+  text-decoration: none;
+  transition: 300ms all ease;
+
+  &:hover {
+    color: #ff374a;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
 }
 </style>
